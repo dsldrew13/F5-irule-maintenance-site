@@ -1,0 +1,21 @@
+when HTTP_REQUEST {
+switch [HTTP::uri] {
+"/companylogo.png" {HTTP::respond 200 content [ifile get "companylogo.png"]}
+default {HTTP::respond 200 content "
+<html>
+   <head>
+      <title>Site Under Maintenance</title>
+   </head>
+   <body>
+      <p>&nbsp;</p>
+      <center><img src=\"companylogo.png\" style=\"width:715px;height:360px;\"></center>
+      <center>
+         <h2>The website is currently under maintenance, please try again in a few hours</h2>
+      </center>
+      <p></p>
+   </body>
+</html>
+"
+}
+}
+}
